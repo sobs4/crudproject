@@ -1,0 +1,13 @@
+
+{% extends "enroll/base.html" %}
+
+{% block content %}
+<div>
+    <h4>Update Student Data</h4>
+    <form action="{% url 'update_data' form.instance.id %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="UPDATE">
+    </form>
+</div>
+{% endblock content %}

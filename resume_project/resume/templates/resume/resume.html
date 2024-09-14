@@ -1,0 +1,45 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+ <meta charset='UTF-8'>
+ <title>{{ profile.name }}'s Resume</title>
+ <link rel="stylesheet" href="{% static 'resume/css/style.css' %}">
+</head>
+<body>
+ <h1>{{ profile.name }}</h1>
+ <p>Email: {{ profile.email }}</p>
+ <p>Phone: {{ profile.phone }}</p>
+ <p>Address: {{ profile.address }}</p>
+ <h2>Summary</h2>
+ <p>{{ profile.summary }}</p>
+ <h2>Experience</h2>
+ <ul>
+ {% for experience in profile.experiences.all %}
+ <li>
+ <h3>{{ experience.job_title }} at {{ experience.company }}</h3>
+ <p>{{ experience.start_date }} - {{ experience.end_date }}</p>
+ <p>{{ experience.description }}</p>
+</li>
+{% endfor %}
+</ul>
+<h2>Education</h2>
+<ul>
+    {% for education in profile.educations.all %}
+    <li>
+    <h3>{{ education.degree }} at {{ education.institution }}</h3>
+    <p>{{ education.start_date }} - {{ education.end_date }}</p>
+    </li>
+    {% endfor %}
+    </ul>
+    <h2>Skills</h2>
+    <ul>
+    {% for skill in profile.skills.all %}
+    <li>{{ skill.name }}</li>
+    {% endfor %}
+    </ul>
+   </body>
+   </html>
+   

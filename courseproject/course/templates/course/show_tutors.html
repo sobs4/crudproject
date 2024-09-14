@@ -1,0 +1,27 @@
+{% extends "course/base.html" %}
+
+{% block content %}
+<h2>All Tutors</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Courses</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tutor in tutors %}
+        <tr>
+            <td>{{ tutor.name }}</td>
+            <td>{{ tutor.email }}</td>
+            <td>
+                {% for course in tutor.courses.all %}
+                {{ course.course_name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

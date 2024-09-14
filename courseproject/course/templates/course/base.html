@@ -1,0 +1,25 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Project</title>
+    <link rel="stylesheet" href="{% static 'course/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container mt-3">
+        <h1 class="text-center">Course Project</h1>
+    {% block content%}
+
+    </div>
+        <div>
+            <a href="{% url 'add_course' %}" class="btn btn-primary">Add Course</a>
+            <a href="{% url 'add_tutor' %}" class="btn btn-primary">Add Tutor</a>
+            <a href="{% url 'show_courses' %}" class="btn btn-primary">Show Courses</a>
+            <a href="{% url 'show_tutors' %}" class="btn btn-primary">Show Tutors</a>
+            <a href="{% url 'search_courses' %}" class="btn btn-primary">Search Courses</a>
+        </div> 
+    </div>
+    
+    {%endblock content%}
+</body>
+</html>

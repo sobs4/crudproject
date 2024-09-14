@@ -1,0 +1,57 @@
+{% extends "enroll/base.html" %}
+
+{% block content %}
+<div>
+    <div class="row">
+        <div class="col-sm-4">
+            <h4>ADD New Student</h4>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success" value="ADD">
+            </form>
+        </div>
+        <div class="col-sm-8">
+            <h4 class="text-center alert alert-info">Show Student Data</h4>
+            {% if student %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for st in student %}
+                            <tr>
+                                <td>{{ st.id }}</td>
+                                <td>{{ st.name }}</td>
+                                <td>{{ st.email }}</td>
+                                <td>{{ st.password }}</td>
+                                <td>
+                                    <form action="{%url 'update_data' st.id%}" method="POST">
+                                    {%csrf_token %}
+                                    <a href="{% url 'update_data' st.id %}" class="btn btn-info">Edit</a>
+                                    </form>
+                                </td>
+                                    <td>
+                                        <form action="{%url 'delete_data' st.id%}" method="POST">
+                                        {%csrf_token %}
+                                        <input type = "submit" class='btn btn-danger' value="Delete">
+                                        </form>
+                                    </td>
+                                    
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h4 class="text-center alert alert-danger">No Records to Show</h4>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "course/base.html" %}
+
+{% block content %}
+<h2>All Courses</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Duration</th>
+            <th>Seats Available</th>
+            <th>Details</th>
+            <th>Tutor</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.course_name }}</td>
+            <td>{{ course.duration }}</td>
+            <td>{{ course.seats_available }}</td>
+            <td>{{ course.details }}</td>
+            <td>{{ course.tutor_id }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
